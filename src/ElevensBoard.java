@@ -190,7 +190,7 @@ public class ElevensBoard {
      */
     public boolean isLegal(List<Integer> selectedCards) {
         /* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
-        return true;
+        return containsPairSum11(selectedCards) || containsJQK(selectedCards);
     }
 
     /**
@@ -204,7 +204,11 @@ public class ElevensBoard {
      */
     public boolean anotherPlayIsPossible() {
         /* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
-        return true;
+        for (int i = 0; i < cardIndexes().size() - 1; i++)
+            for (int j = i + 1; j < cardIndexes().size(); j++)
+                if (isLegal(List.of(cardIndexes().get(i), cardIndexes().get(i))))
+                    return true;
+        return false;
     }
 
     /**
@@ -227,7 +231,14 @@ public class ElevensBoard {
      */
     private boolean containsPairSum11(List<Integer> selectedCards) {
         /* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
-        return true;
+        if (selectedCards.size() == 2) {
+            int sum = 0;
+            for (int i : selectedCards)
+                sum += cardAt(i).pointValue();
+            if (sum == 11)
+                return true;
+        }
+        return false;
     }
 
     /**
@@ -241,6 +252,15 @@ public class ElevensBoard {
      */
     private boolean containsJQK(List<Integer> selectedCards) {
         /* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
-        return true;
+        String[] ranks = { "jack", "queen", "king" };
+        int count = 0;
+        for (int i : selectedCards)
+            for (String rank : ranks) {
+                if (cardAt(i).rank().equals(rank)) {
+                    count++;
+                    break;
+                }
+            }
+        return count == 3;
     }
 }
