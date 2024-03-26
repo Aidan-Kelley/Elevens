@@ -67,6 +67,12 @@ public class Deck {
      */
     public void shuffle() {
         /* *** TO BE IMPLEMENTED IN ACTIVITY 4 *** */
+        ArrayList<Card> temp = new ArrayList<>(cards.size());
+        while (cards.size() > 0) {
+            int randChoice = (int) (Math.random() * cards.size());
+            temp.add(cards.remove(randChoice));
+        }
+        cards = temp;
     }
 
     /**
