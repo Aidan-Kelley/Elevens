@@ -1,5 +1,6 @@
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * The ElevensBoard class represents the board in a game of Elevens.
@@ -52,7 +53,7 @@ public class ElevensBoard {
             System.out.println(deck);
             System.out.println("----------");
         }
-        dealMyCards();
+        newGame();
     }
 
     /**
@@ -206,7 +207,7 @@ public class ElevensBoard {
         /* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
         for (int i = 0; i < cardIndexes().size() - 1; i++)
             for (int j = i + 1; j < cardIndexes().size(); j++)
-                if (isLegal(List.of(cardIndexes().get(i), cardIndexes().get(i))))
+                if (isLegal(Arrays.asList(cardIndexes().get(i), cardIndexes().get(j))))
                     return true;
         return false;
     }

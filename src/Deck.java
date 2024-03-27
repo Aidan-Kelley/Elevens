@@ -82,7 +82,7 @@ public class Deck {
      *         previously dealt.
      */
     public Card deal() {
-        return null;
+        return drawACard();
     }
 
     public Card drawACard() {
